@@ -1,0 +1,62 @@
+<div id="post_id"><%= @post.id %></div>
+
+<div class = "row">
+  <div class = "col-sm-10 blog-main">
+
+    <% our_time = @post.created_at + 3.hours%>
+    <h2><strong><%= @post.title %></strong></h2>
+    <p class="blog-post-meta"><%= our_time.to_s.split('UTC')[0] %></p>
+    <p>
+      <strong>Specialization:</strong>
+      <%= @post.spec %>
+    </p>
+
+    <h5><strong>Description:</strong></h5>
+    <p><%= @post.description %></p>
+
+    <p>
+      <%= @post.body %>
+    </p>
+
+
+
+
+    <%= link_to 'Back', posts_path %>
+    <% if current_user && (current_user.admin || current_user == @post.user)%>
+    <%= link_to 'Edit', edit_post_path(@post) %>
+    <% end %>
+
+    <% if current_user %>
+      <%= form_with model:[@post,@comment] do |f| %>
+      <%= f.text_field :body %>
+      <%= f.submit "Comment"%>
+    <% end %>
+
+
+    <% else %>
+    <p> You need to <%= link_to "Login", new_user_session_path%> before you can comment </p>
+    <% end %>
+
+    <div class="container">
+      <div id="comment_pane" >
+        <div class="row">
+          <div class="col-md-8">
+            <div class="comments-list">
+              <% @comments.each do |comment|%>
+              <div class="media">
+                <div class="media-body">
+                  <%= render "comments/comment", comment: comment%>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "col-sm-2 blog-sidebar">
+    <%= render 'layouts/right'%>
+  </div>
+
+</div>

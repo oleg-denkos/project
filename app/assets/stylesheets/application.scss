@@ -1,0 +1,20 @@
+.alert-alert {
+	@extend .alert-danger;
+}
+.alert-notice{
+	@extend .alert-success;
+}
+@import "/*";
+@import "bootstrap";
+@import "tether";
+
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 1px dotted #ccc;
+}
+.pull-right {
+float: right;
+}

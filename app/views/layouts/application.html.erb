@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <title>Project</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= action_cable_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta id='meta_post' post="<%= @post.try(:id) %>"/>
+  </head>
+
+  <body>
+    <%= render 'layouts/navbar'%>
+
+    <div class = "container">
+      <%= render 'layouts/alerts'%>
+      <%= yield %>
+    </div>
+  </body>
+</html>

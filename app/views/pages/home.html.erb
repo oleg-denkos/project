@@ -1,0 +1,20 @@
+
+<h2>Latest:</h2>
+<div class = "row">
+	<div class = "col-sm-9 blog-main">
+
+		<% @posts.each do |post| %> 
+		<div class="card w-75">
+			<div class="card-body">
+				<h5 class="card-title"><%= post.title %></h5>
+				<p class="card-text"><%= post.description %></p>
+				<a href="http://localhost:3000/posts/<%= post.id %>" class="btn btn-info">Show more...</a>
+			</div>
+		</div>
+		<% end %>
+		
+	</div>
+	<div class = "col-sm-2 offset-sm-1 blog-sidebar">
+		<%= render 'layouts/right'%>
+	</div>
+</div>
