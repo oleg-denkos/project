@@ -1,4 +1,4 @@
-class CommentsChannel < ApplicationCable::Channel
+	class CommentsChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
     post = Post.find(params[:id])
@@ -7,6 +7,7 @@ class CommentsChannel < ApplicationCable::Channel
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
+    stop_all_streams
   end
 
 end

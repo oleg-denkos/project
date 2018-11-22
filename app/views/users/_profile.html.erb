@@ -1,18 +1,36 @@
+<div class="jumbotron">
 <div class="row">
 	<label for="username" class="col-4 col-form-label">Username</label> 
 	<div class="col-8">
-		<%= @user.username %>
+		<%= best_in_place @user, :username %>
 	</div>
 </div>
+
 <div class="row">
 	<label for="name" class="col-4 col-form-label">Email</label> 
 	<div class="col-8">
-		<%= @user.email %>
+		<%= best_in_place @user, :email %>
 	</div>
 </div>
 <div class="row">
-	<label for="name" class="col-4 col-form-label">Password</label>
+	<label for="status" class="col-4 col-form-label">Status</label> 
 	<div class="col-8">
-		<%= link_to "Change Password",edit_user_registration_path(@user), class:"btn btn-primary" %>
+		<% if @user.admin %>
+		<a class="badge badge-warning">Admin</a>
+		<% else %>
+		<p>User
+			<% if current_user && current_user.admin %>
+			<%= link_to "Add admin", { :controller => "users", :action => "admin"} %>
+			<% end %></p>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="row">
+		<label for="name" class="col-4 col-form-label">Password</label>
+		<div class="col-8">
+			<%= link_to "Change Password",edit_user_registration_path(@user), class:"btn btn-primary" %>
+		</div>
 	</div>
 </div>
+

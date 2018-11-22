@@ -13,6 +13,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments
+
   end
 
   # GET /posts/new
@@ -72,6 +73,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :description, :spec)
+      params.require(:post).permit(:title, :body, :description, :spec, :tag_list)
     end
 end

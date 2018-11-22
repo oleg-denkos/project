@@ -1,38 +1,60 @@
 <%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<% if post.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <ul>
+    <% post.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<!------ Include the above in your HEAD tag ---------->
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-primary">
+        <div class="row">
+
+          <div class="form-group col-md-12">
+            <%= form.label "Title" %>
+            <%= form.text_field :title, class:"form-control", placeholder:"Title" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group"> 
+              <%= form.label "Specialization" %>
+              <%= form.number_field :spec, class:"form-control", placeholder:"Specialization" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= form.label "Tags" %>
+              <%= form.text_field :tag_list, placeholder: "Tags", id: "tags",class:"form-control"%>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <%= form.label "Description" %>
+            <%= form.text_area :description, class:"form-control", placeholder:"Short description" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <%= form.label "Abstract" %>
+            <%= form.text_area :body, class:"form-control", placeholder:"Abstract" %>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
   </div>
+</div>
+<div class="actions pull-right">
+  <%= form.submit class:"btn btn-primary " %>
+</div>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :spec %>
-    <%= form.number_field :spec %>
-  </div>
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

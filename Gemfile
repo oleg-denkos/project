@@ -4,10 +4,24 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 
 gem 'devise'
+
 gem 'bootstrap'
+
 gem 'popper_js'
+
 gem 'tether-rails'
+
 gem 'simple_form'
+
+gem 'best_in_place', '~> 3.1'
+
+gem 'jquery-ui-rails'
+
+gem 'acts-as-taggable-on', '~> 6.0'
+
+gem 'filterrific'
+
+gem 'will_paginate', '~> 3.1.0'
 
 gem 'libv8', '~> 6.7', '>= 6.7.288.46.1'
 gem 'execjs'

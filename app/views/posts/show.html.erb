@@ -1,4 +1,4 @@
-<div id="post_id"><%= @post.id %></div>
+<div id="post_id"><% @post.id %></div>
 
 <div class = "row">
   <div class = "col-sm-10 blog-main">
@@ -10,7 +10,12 @@
       <strong>Specialization:</strong>
       <%= @post.spec %>
     </p>
-
+        <p>
+      <strong>Tags:</strong>
+      <% @post.tag_list.each do |tag|%>
+          <%= tag %>
+      <% end %>
+    </p>
     <h5><strong>Description:</strong></h5>
     <p><%= @post.description %></p>
 
