@@ -1,3 +1,42 @@
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script>
+  $(function() {
+    var dataset_string = document.getElementById('tags').dataset.autocomplete;
+    var available_tags = dataset_string.slice(2, dataset_string.length - 2).split('","')
+
+    function split(val) {
+      return val.split(/ \s*/);
+    }
+
+    function extractLast(term) {
+      return split(term).pop();
+    }
+
+    $("#tags")
+    .autocomplete({
+      minLength: 0,
+      source: function( request, response ) {
+        response( $.ui.autocomplete.filter(
+          available_tags, extractLast(request.term)));
+      },
+      focus: function() {
+        return false;
+      },
+      select: function(event, ui) {
+        var terms = split(this.value);
+        terms.pop();
+
+        terms.push( ui.item.value );
+        terms.push( "" );
+        this.value = terms.join( " " );
+        return false;
+      }
+    });
+  });
+
+</script>
 <%= form_with(model: post, local: true) do |form| %>
 <% if post.errors.any? %>
 <div id="error_explanation">
@@ -33,7 +72,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <%= form.label "Tags" %>
-              <%= form.text_field :tag_list, placeholder: "Tags", id: "tags",class:"form-control"%>
+              <%= form.text_field :tag_list, placeholder: "Tags", class: "form-control", id: "tags", data: { autocomplete: ActsAsTaggableOn::Tag.pluck(:name) } %>
             </div>
           </div>
         </div>
@@ -46,7 +85,7 @@
         <div class="row">
           <div class="form-group col-md-12">
             <%= form.label "Abstract" %>
-            <%= form.text_area :body, class:"form-control", placeholder:"Abstract" %>
+            <%= form.text_area :body, rows: "4", class:"form-control", placeholder:"Abstract" %>
           </div>
         </div>
       </div>
