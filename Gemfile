@@ -26,6 +26,10 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'libv8', '~> 6.7', '>= 6.7.288.46.1'
 gem 'execjs'
 
+gem "socialization"
+
+gem 'chewy'
+
 gem 'jquery-rails'
 gem 'ruby_dev', '~> 0.1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

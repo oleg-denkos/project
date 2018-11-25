@@ -1,0 +1,2 @@
+document.getElementById("likes_counter<%= @comment_id %>").textContent = "<%= @likes_counter %>";
+document.getElementById("like_button<%= @comment_id %>").textContent = "<%= @user_liked ? "Unlike" : "Like" %>";

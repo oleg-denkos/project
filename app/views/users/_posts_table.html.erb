@@ -1,15 +1,18 @@
+<div id="filterrific_results">
+
 <table class="table table-striped table-bordered table-list">
   <thead>
     <tr>
-     <th>Abstract</th>
-     <th>Specialization</th>
+     <th><%= filterrific_sorting_link(@filterrific, :title) %></th>
+     <th><%= filterrific_sorting_link(@filterrific, :spec) %></th>
      <th>Tags</th>
+     <th><%= filterrific_sorting_link(@filterrific, :created_at) %></th>
      <th>Actions</th>
    </tr>
  </thead>
 
  <tbody id="myTable">
-  <% @posts.each do |post| %>
+  <% @user.posts.each do |post| %>
   <tr>
     <td><%= post.title %></td>
     <td><%= post.spec %></td>
@@ -17,6 +20,7 @@
       <a class="badge badge-info"><%= tag %></a>
       <% end %>
     </td>
+    <td><% our_time = post.created_at + 3.hours%><%= our_time.to_s.split('UTC')[0] %> </td>
     <td><%= link_to "Show", post_path(post) %>
      <% if current_user && current_user.admin || current_user == post.user %>
      / <%= link_to 'Delete', post_path(post), method: :delete,
@@ -26,3 +30,6 @@
    <% end %>
  </tbody>
 </table>
+</div>
+<%= will_paginate posts %>
+<br>

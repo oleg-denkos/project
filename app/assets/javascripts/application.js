@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.purr
+//= require filterrific/filterrific-jquery
 //= require cable
 //= require bootstrap
 //= require popper
@@ -21,6 +22,7 @@
 //= require turbolinks
 //= require_tree .
 //= require best_in_place
+
 $(function(){
     $('.button-checkbox').each(function(){
 		var $widget = $(this),

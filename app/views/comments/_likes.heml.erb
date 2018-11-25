@@ -1,0 +1,5 @@
+<% if current_user && current_user.likes(comment) %>
+<%= link_to "Unike", post_like_path(comment), method: :delete %>	
+<% else %>
+<%= link_to "Like", post_like_path(comment), method: :post %>
+<% end %>
