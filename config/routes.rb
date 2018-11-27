@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 		end
 	end
 
+	
 	get "search", to: 'search#index'
 	post 'comments/like_or_unlike'
 	devise_for :users

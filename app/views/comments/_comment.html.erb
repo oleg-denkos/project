@@ -1,7 +1,11 @@
 <div class="media mb-4">
 	<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
 	<div class="media-body">
-		<h5 class="mt-0"><%= comment.user.username%> - <small><%= comment.created_at.strftime("%k:%M:%S %e.%m.%Y")%></small>	
+		<h5 class="mt-0"><%= comment.user.username%> - <small><%= comment.created_at.strftime("%k:%M:%S %e.%m.%Y")%></small>
+			<% if comment!=nil %> 
+			<div id="likes_counter<%= comment.id %>" class="btn btn-warning btn-sm float-right" > <%= comment.likers_count %> </div> 
+			<% end %> 
+			<%= link_to '♡', { :controller => "comments", :post_id => comment.post_id, :action => "like_or_unlike", :comment => comment }, method: :post, remote: true, class: "btn btn-warning btn-sm float-right", id: "like_button" + comment.id.to_s %>	
 		</h5> - 
 		<%= comment.body %>
 	</div>
