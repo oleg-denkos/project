@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
+  helper_method :sort_column, :sort_direction
+
+
   # GET /posts
   # GET /posts.json
   def index
@@ -16,6 +19,12 @@ class PostsController < ApplicationController
 
   end
 
+  def search
+    @search = Post.search(:include => [:comments]) do
+      keywords(params[:q])
+    end
+  end
+
   # GET /posts/new
   def new
     @post = Post.new
@@ -24,7 +33,6 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
   end
-
   # POST /posts
   # POST /posts.json
   def create
@@ -76,4 +84,5 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :body, :description, :spec, :tag_list)
     end
+    
   end

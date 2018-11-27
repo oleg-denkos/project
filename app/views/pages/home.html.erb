@@ -1,7 +1,7 @@
-<h2>Latest:</h2>
 <div class = "row">
+	
 	<div class = "col-sm-10 blog-main">
-
+		<h1>Last updates:</h1> 
 		<% @posts.each do |post| %> 
 		<div class="card w-75">
 			<div class="card-body">
@@ -16,7 +16,12 @@
 					<a href="http://localhost:3000/posts/<%= post.id %>" class="btn btn-info">Show more...</a>
 				</div>
 				<div class="card-footer">
-					Created by <%= link_to post.user.username, post.user  %>
+					Created by <%= link_to post.user.username, post.user  %>. For specialization <%= post.spec %>
+					<div class="pull-right">
+						<% post.tag_list.each do |tag|%>
+						<a class="badge badge-info"><%= tag %></a>
+						<% end %>
+					</div>
 				</div>
 			</div>
 			<% end %>

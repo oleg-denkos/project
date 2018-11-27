@@ -3,54 +3,43 @@ class UsersController < ApplicationController
 	require 'builder'
 	require 'will_paginate'
 	require 'will_paginate/active_record'
+  helper_method :sort_column, :sort_direction
 
+  
+  
 	def index
 		@users = User.all
 	end
 
 	def show
 		@user = User.find(params[:id])
+    params[:sort] ||= "created_at"
+    params[:direction] ||= "desc"
+		@sorted = @user.posts.order(params[:sort] + " " + params[:direction])
 
-		@user.posts.paginate(:page => params[:page], :per_page => 10)	
-
-		@filterrific = initialize_filterrific(
-			@user.posts,
-			params[:filterrific],
-			select_options: {
-				sorted_by: @user.posts.options_for_sorted_by },
-				persistence_id: 'shared_key',
-				default_filter_params: {},
-				available_filters: [:sorted_by, :with_title, :with_spec, :with_created_at],
-				sanitize_params: false
-				) or return
-		@posts = @filterrific.find.page(params[:page])
-    # Respond to html for initial page load and to js for AJAX filter updates.
-    respond_to do |format|
-    	format.html
-    	format.js
-    end
-
-  rescue ActiveRecord::RecordNotFound => e
-  	puts "Had to reset filterrific params: #{ e.message }"
-  	redirect_to(reset_filterrific_url(format: :html)) and return
   end
-
-  def reset_filterrific
-  	session[:filterrific_restaurants] = nil
-  	redirect_to action: :show
-  end
-
   def update
-  	@user = User.find(params[:id])
-  	params.permit!
-  	@user.update_attributes(params[:user])
-  	respond_with @user
-  end
-  def admin
-  	@user = User.find(params[:id])
-  	params.permit!
-  	@user.update_attributes(admin: true)
-  	@user.save
-  end
+   @user = User.find(params[:id])
+   params.permit!
+   @user.update_attributes(params[:user])
+   respond_with @user
+ end
+ def admin
+   @user = User.find(params[:id])
+   params.permit!
+   @user.update_attributes(admin: true)
+   @user.save
+ end
+
+ private
+
+ def sort_column
+  @sorted.column_names.include?(params[:sort]) ? params[:sort] : "title"
+end
+
+def sort_direction
+  %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc" 
 
 end
+end
+

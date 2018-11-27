@@ -11,9 +11,5 @@ class User < ApplicationRecord
   validates :username, :email, presence: true
   validates :username, :email, uniqueness: true
 
-  def likes?
-  	comment.likes.where(user_id: id).any?
-  	
-  end
 
 end

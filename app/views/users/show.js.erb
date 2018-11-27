@@ -1,4 +1,1 @@
-<% js = escape_javascript(
-	render(partial: 'users/posts_table', locals: { posts: @posts })
-	) %>
-$("#filterrific_results").html("<%= js %>");
+$("#products").html("<%= escape_javascript(render("products")) %>");
