@@ -11,13 +11,13 @@
 
   <div class="card bg-light">
     <article class="card-body mx-auto" style="max-width: 400px;">
-      <h4 class="card-title mt-3 text-center">Log in</h4>
+      <h4 class="card-title mt-3 text-center"><%= t "pages.sign_up" %></h4>
       <p>
-        <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
-        <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+        <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   <%= t "users.login_via" %> Twitter</a>
+        <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   <%= t "users.login_via" %> facebook</a>
       </p>
       <p class="divider-text">
-        <span class="bg-light">OR</span>
+        <span class="bg-light"><%= t "users.or" %></span>
       </p>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%=  devise_error_messages! %>
@@ -27,14 +27,14 @@
           <span class="input-group-text"> <i class="fa fa-user"></i> </span>
         </div>
         <% f.label :username %><br />
-        <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "form-control input-lg", placeholder:"Username" %>
+        <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "form-control input-lg", placeholder: t("users.username") %>
       </div> <!-- form-group// -->
       <div class="form-group input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
         </div>
         <% f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control",placeholder:"Email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control",placeholder:t("users.email") %>
       </div> <!-- form-group// -->
 
       <div class="form-group input-group">
@@ -42,19 +42,19 @@
           <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
         </div>
         <% f.label :password %>
-        <%= f.password_field :password, autocomplete: "new-password", class:"form-control input-lg", placeholder:"Password (6 characters minimum)" %>
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control input-lg", placeholder:t("users.psw_size") %>
       </div> <!-- form-group// -->
       <div class="form-group input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
         </div>
         <% f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control input-lg", placeholder:"Confirm password" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control input-lg", placeholder:t("users.psw_confirm") %>
       </div> <!-- form-group// -->                                      
       <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+        <button type="submit" class="btn btn-primary btn-block"> <%= t "users.create" %>  </button>
       </div> <!-- form-group// -->      
-      <p class="text-center">Have an account? <a href="">Log In</a> </p>                                                                 
+      <p class="text-center"> <%= t "users.have_acc" %> <%= link_to t('pages.login'), new_user_session_path %> </p>                                                                 
       <% end %>
     </article>
   </div>

@@ -1,5 +1,5 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark mb-4">
-  <a class="navbar-brand" href="<%= root_path %>">Main</a>
+  <a class="navbar-brand" href="<%= root_path %>"><%= t "pages.main" %></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,34 +7,52 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="<%= posts_path %>">All Abstracts</a>
+        <a class="nav-link" href="<%= posts_path %>"><%= t "pages.posts" %></a>
       </li>
-      
+      <%= link_to t("pages.back"), :back, class:"nav-link" %>
     </ul>
     <%= form_tag( search_path, class:"form-inline my-2 my-lg-0", method: :get) do %>
-    <%= text_field_tag :q, params[:q], class:"form-control mr-sm-2", placeholder:"Search"-%>
-    <%= submit_tag "Search", title:nil, class:"btn btn-outline-success my-2 my-sm-0" %>
+    <%= text_field_tag :q, params[:q], class:"form-control mr-sm-2", placeholder:t("pages.search")-%>
+    <%= submit_tag t('pages.search'), title:nil, class:"btn btn-outline-success my-2 my-sm-0" %>
     <% end -%>
+
     <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= t "pages.language" %>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <div class='dropdown-item'>
+            <%= link_to_unless_current "BLR", locale: "by" %>
+          </div>
+          <div class='dropdown-item'>
+            <%= link_to_unless_current "Eng", locale: "en" %>
+          </div>
+          <div class='dropdown-item'>
+            <%= link_to_unless_current "Rus", locale: "ru" %>
+          </div>
+        </div>
+      </li>
+
       <% if current_user %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= current_user.username %>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to 'Show Account', current_user, class:'dropdown-item' %>
+          <%= link_to t('pages.show_account'), current_user, class:'dropdown-item' %>
           <% if current_user && current_user.admin %>
-          <%= link_to "Users List", users_path, class:"dropdown-item" %>
+          <%= link_to t('pages.users_list'), users_path, class:"dropdown-item" %>
           <% end %>
           <div class="dropdown-divider"></div>
-          <%= link_to 'Sign out', destroy_user_session_path, class:'dropdown-item',
+          <%= link_to t('pages.sign_out'), destroy_user_session_path, class:'dropdown-item',
           method: :delete %>
         </div>
       </li>
 
       <% else %>
-      <%= link_to 'Sign Up', new_user_registration_path, class:'nav-link' %>
-      <%= link_to 'Sign in', new_user_session_path, class:'nav-link' %>
+      <%= link_to t('pages.sign_up'), new_user_registration_path, class:'nav-link' %>
+      <%= link_to t('pages.sign_in'), new_user_session_path, class:'nav-link' %>
       <% end %>
     </ul>
   </div>

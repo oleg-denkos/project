@@ -1,36 +1,35 @@
 <div class="jumbotron">
-<div class="row">
-	<label for="username" class="col-4 col-form-label">Username</label> 
-	<div class="col-8">
-		<%= best_in_place @user, :username %>
-	</div>
-</div>
-
-<div class="row">
-	<label for="name" class="col-4 col-form-label">Email</label> 
-	<div class="col-8">
-		<%= best_in_place @user, :email %>
-	</div>
-</div>
-<div class="row">
-	<label for="status" class="col-4 col-form-label">Status</label> 
-	<div class="col-8">
-		<% if @user.admin %>
-		<a class="badge badge-warning">Admin</a>
-		<% else %>
-		<p>User
-			<% if current_user && current_user.admin %>
-			<%= link_to "Add admin", { :controller => "users", :action => "admin"} %>
-			<% end %></p>
-			<% end %>
+	<div class="row">
+		<label for="username" class="col-4 col-form-label"><%= t "users.username" %></label> 
+		<div class="col-8">
+			<%= best_in_place @user, :username %>
 		</div>
 	</div>
 
 	<div class="row">
-		<label for="name" class="col-4 col-form-label">Password</label>
+		<label for="name" class="col-4 col-form-label"><%= t "users.email" %></label> 
 		<div class="col-8">
-			<%= link_to "Change Password",edit_user_registration_path(@user), class:"btn btn-primary" %>
+			<%= best_in_place @user, :email %>
 		</div>
 	</div>
+	<div class="row">
+		<label for="status" class="col-4 col-form-label"><%= t "users.status" %></label> 
+		<div class="col-8">
+			<% if @user.admin %>
+			<a class="badge badge-warning"><%= t "users.admin" %></a>
+			<% else %>
+			<p><%= t "users.user" %>
+			</p>
+			<% end %>
+		</div>
+	</div>
+	<% if current_user && current_user == @user %>
+	<div class="row">
+		<label for="name" class="col-4 col-form-label"><%= t "users.password" %></label>
+		<div class="col-8">
+			<%= link_to t("users.change_psw"), edit_user_registration_path, class:"btn btn-info" %>		
+		</div>
+	</div>
+	<% end %>
 </div>
 

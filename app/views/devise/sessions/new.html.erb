@@ -11,13 +11,13 @@
 
   <div class="card bg-light">
     <article class="card-body mx-auto" style="max-width: 400px;">
-      <h4 class="card-title mt-3 text-center">Log in</h4>
+      <h4 class="card-title mt-3 text-center"><%= t "posts.login" %></h4>
       <p>
-        <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
-        <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+        <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   <%= t "posts.login_via" %> Twitter</a>
+        <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   <%= t "posts.login_via" %> facebook</a>
       </p>
       <p class="divider-text">
-        <span class="bg-light">OR</span>
+        <span class="bg-light"><%= t "posts.or" %></span>
       </p>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <%=  devise_error_messages! %>
@@ -27,7 +27,7 @@
           <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
         </div>
         <% f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control input-lg", placeholder:"Email Address" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control input-lg", placeholder:t("users.email") %>
       </div> <!-- form-group// -->
 
       <div class="form-group input-group">
@@ -35,12 +35,12 @@
           <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
         </div>
         <% f.label :password %>
-        <%= f.password_field :password, autocomplete: "new-password", class:"form-control input-lg", placeholder:"Password (6 characters minimum)" %>
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control input-lg", placeholder:t("users.psw_size") %>
       </div> <!-- form-group// -->                                   
       <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block"> Log in  </button>
+        <button type="submit" class="btn btn-primary btn-block"> <%= t "posts.login" %> </button>
       </div> <!-- form-group// -->      
-      <p class="text-center">Haven't an account? <a href="http://localhost:3000/users/sign_up">Register</a> </p>                                                                 
+      <p class="text-center"><%= t "users.have_acc" %> <%= link_to t('pages.sign_up'), new_user_registration_path %> </p>                                                                 
       <% end %>
     </article>
   </div>

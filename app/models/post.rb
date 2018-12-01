@@ -1,7 +1,9 @@
 class Post < ApplicationRecord
-	
-	has_many :comments, dependent: :destroy
 	belongs_to :user
+
+	has_many :rates, dependent: :destroy
+	has_many :comments, dependent: :destroy
+	
 
 	validates :title, :body, :description, :spec, :tag_list, presence: true
  	validates :spec, numericality: { only_integer: true }
@@ -13,8 +15,10 @@ class Post < ApplicationRecord
 
 	searchable do
 		text :title, :body, :description, boost: 5.0
-		integer :user_id
 		integer :spec
+		text :tag_list do
+			tag_list.map { |tag| tag}
+		end
 		text :comments do
 			comments.map { |comment| comment.body }
 		end

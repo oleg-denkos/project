@@ -1,39 +1,61 @@
+
 <div class = "row">
-  <div class = "col-sm-10 blog-main">
-
-    <% our_time = @post.created_at + 3.hours%>
-    <h2><strong><%= @post.title %></strong></h2>
-    <p class="blog-post-meta"><%= our_time.to_s.split('UTC')[0] %></p>
-    <p>
-      <strong>Specialization:</strong>
-      <%= best_in_place @post, :spec %>
-    </p>
-    <p>
-      <strong>Tags:</strong>
-      <% @post.tag_list.each do |tag|%>
-      <%= tag %>
+  <div class = "col-sm-9 blog-main">
+    <h2 align="center"><strong><%= @post.title %></strong>
+      <% if current_user && (current_user.admin || current_user == @post.user)%>
+      <%= link_to t('posts.delete'), 
+      post_path(@post), class:"btn btn-danger pull-right", method: :delete, data: { confirm: t('posts.conirm') } %>
+      <%= link_to t('pages.edit'), edit_post_path(@post), class: "btn btn-success pull-right" %>
       <% end %>
-    </p>
-    <h5><strong>Description:</strong></h5>
-    <p><%= @post.description %></p>
+    </h2>
+    <br>
+    <strong><%= t "posts.description" %>:</strong>
+    <h7><%= @post.description %>... 
+      <br>
+      <small> <%= t "posts.created_by" %> <%=link_to @post.user.username, @post.user, method: :get %>. <%= t "posts.for_spec" %></small><a class="badge badge-warning"><%= @post.spec%></a>
+    </h7> 
 
-    <p>
-      <%= @post.body %>
-    </p>
-    <%= link_to "Back", :back %>
-    <% if current_user && (current_user.admin || current_user == @post.user)%>
-    <%= link_to 'Edit', edit_post_path(@post) %>
+    <% if @checker %>
+    <div class="new-review-form">
+      <%= simple_form_for([@post, @post.rates.build]) do |f| %>
+      <div id="rating-form">
+        <label>Rating</label>
+      </div>
+      <%= f.button :submit %>
+      <% end %>
+    </div>
+    <% else %>
+    <br>
+    <a class="badge badge-warning">average rating <%=@average_rate %></a>
+    
+    <div class="average-rate-rating" data-score=<%= @average_rate %>></div>
+    <span class="number-of-reviews">Based on <%= @post.rates.count %> reviews</span>
+
     <% end %>
 
+    
+    <hr>
+    <p>
+      <%= @post.body.html_safe %>
+      <br>
+      <% @post.tag_list.each do |tag|%>
+      <span class="badge badge-pill badge-info"><%= tag %></span>
+      <% end %>
+      <hr>
+      <strong> <%= t "posts.created_at" %></strong>: <%= @post.created_at.to_s.split('+')[0] %>
+    </p>
+    <p>
+      <strong><%= t "posts.updated_at" %> </strong> : <%= @post.updated_at.to_s.split('+')[0] %>
+    </p>
     <% if current_user %>
-    <%= form_with model:[@post, @comment] do |f| %>
-    <%= f.text_field :body %>
-    <%= f.submit "Comment"%>
+    <%= form_with class:"form-inline my-2  my-lg-0", model:[@post, @comment] do |f| %>
+    <%= f.text_field :body, class:"form-control mr-sm-2" %>
+    <%= f.submit t("posts.comment"), class:"btn btn-outline-success my-2 my-sm-0"%>
     <% end %>
 
 
     <% else %>
-    <p> You need to <%= link_to "Login", new_user_session_path%> before you can comment </p>
+    <p> You need to <%= link_to t("posts.login"), new_user_session_path%> before you can comment </p>
     <% end %>
 
     <div class="container">
@@ -54,7 +76,45 @@
       </div>
     </div>
   </div>
-  <div class = "col-sm-2 blog-sidebar">
+  <div class = "col-sm-3 blog-sidebar">
     <%= render 'layouts/right'%>
   </div>
 </div>
+
+<script>
+  $('.rate-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+
+
+<script>
+  $('.average-rate-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>
+
+<script>
+  $('#rating-form').raty({
+    path: '/assets/',
+    scoreName: 'rate[rating]'
+  });
+</script>
+
+<script>
+  $('.rate-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

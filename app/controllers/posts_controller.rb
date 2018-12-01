@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
   helper_method :sort_column, :sort_direction
-
+  before_action :average_rate, :check_rater, only: [:show]
 
   # GET /posts
   # GET /posts.json
@@ -13,10 +13,19 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = Post.find(params[:id])
     @comment = Comment.new
-    @comments = @post.comments
+    @comments = @post.comments 
 
+  end
+
+  def average_rate
+    if @post.rates.blank?
+      @average_rate = 0
+    else
+      @average_rate = @post.rates.average(:rating).round(2)
+      @post.aver_rate = @average_rate
+      @post.save
+    end
   end
 
   def search
@@ -30,6 +39,15 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def check_rater
+    if current_user
+      @checker = true
+      if @post.rates.find_by(user_id: current_user.id) != nil
+        @checker = false
+      end
+    end
+  end
+
   # GET /posts/1/edit
   def edit
   end
@@ -40,7 +58,7 @@ class PostsController < ApplicationController
     @post.user = current_user
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post, notice: t("notice.post")}
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -54,7 +72,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @post, notice: t("notice.post_update") }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -66,7 +84,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to posts_url, notice: t("notice.post_destroy") }
       format.json { head :no_content }
     end
   end

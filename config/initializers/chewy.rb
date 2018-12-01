@@ -1,1 +1,0 @@
-Chewy.settings = {host: 'localhost:3000'}

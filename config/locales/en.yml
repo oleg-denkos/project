@@ -30,4 +30,83 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      users: 
+        username: "username"
+        created_at: "created_at"
+        updated_at: "updated_at"
+      posts:
+        title: "Title"
+        body: "Main text"
+        description: "description"
+        spec: "Specialization"
+        created_at: "Created at"
+        updated_at: "Updated at"
+
+  pages:
+    title: 'Last updates:'
+    most_rated: "Most rated:"
+    main: "Main"
+    posts: 'All abstracts'
+    search: "Search"
+    sign_in: "Sign in"
+    sign_out: "Sign out"
+    sign_up: "Sign up"
+    show_account: "Show Account"
+    users_list: "Users List"
+    create: "Share new lection"
+    back: "Go back"
+    edit: "Edit"
+    search_results: "Search results"
+    show: "Show"
+    language: "Language"
+    all_tags: "Tags cloud"
+
+  posts:
+    abstracts: "Abstracts"
+    delete: "Delete"
+    confirm: "Are you sure?"
+    show_more: "Show more..."
+    created_by: "Created by"
+    for_spec: "For specialization"
+    spec: "Specialization"
+    tags: "Tags"
+    description: "Description"
+    comment: "Comment"
+    login: "Log in"
+    created_at: "Created at"
+    updated_at: "Last update"
+    new_post: "New abstract"
+    edit_post: "Edit abstract"
+    title: "Title"
+    description_short: "Short description"
+    body: "Abstact"
+    complete: "Complete"
+    actions: "Actions"
+
+  users:
+    username: "Username"
+    email: "Email"
+    status: "Status"
+    admin: "Admin"
+    user: "User"
+    password: "Password"
+    change_psw: "Change Password"
+    current_psw: "Current Password"
+    admin_only: "Only for admins"
+    or: "OR"
+    login_via: "Login via"
+    psw_size: "Password (6 characters minimum)"
+    psw_confirm: "Confirm password"
+    create: "Create Account"
+    update: "Update"
+    have_acc: "Have an account?"
+    havent_acc: "Haven't an account?"
+
+  notice: 
+    rate: 'Thanks for the feedback.'
+    post: 'Abstract was successfully created.'
+    post_update: 'Abstract was successfully updated.'
+    post_destroy: 'Abstract was successfully destroyed.'
+

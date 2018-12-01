@@ -1,0 +1,12 @@
+<%= simple_form_for([@post, @post.rates.build]) do |f| %>
+	<div id="rating-form">
+		<label>Rating</label>
+	</div>
+<% end %>
+
+<script>
+	$('#rating-form').raty({
+		path: '/assets/',
+		scoreName: 'review[rating]'
+	});
+</script>

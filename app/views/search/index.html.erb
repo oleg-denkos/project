@@ -1,32 +1,37 @@
-<h1>Search results:</h1>
+<div class = "row">
+	<div class = "col-sm-10 blog-main">
+		<h1><%= t "pages.search_results" %>:</h1>
 
-<% if @search %>
-<ol>
-	<% @search.each_hit_with_result do |hit, post| %>
-	<div class="card w-75">
-		<div class="card-body">
-			<h5 class="card-title"><%= post.title %>
-				<% if current_user && current_user.admin || current_user == post.user %>
-				<%= link_to 'Delete', 
-				post_path(post), class:"badge badge-danger pull-right",	
-				method: :delete, 
-				data: { confirm: 'Are you sure?' } %>
-				<% end %></h5>
-				<p class="card-text"><%= post.description %></p>
-				<a href="http://localhost:3000/posts/<%= post.id %>" class="btn btn-info">Show more...</a>
-			</div>
-			<div class="card-footer">
-				Created by <%= link_to post.user.username, post.user  %>. For specialization <%= post.spec %>
-				<div class="pull-right">
-					<% post.tag_list.each do |tag|%>
-					<a class="badge badge-info"><%= tag %></a>
-					<% end %>
+		<% if @search %>
+		<ol>
+			<% @search.each_hit_with_result do |hit, post| %>
+			<div class="card w-75">
+				<div class="card-body">
+					<h5 class="card-title"><%= post.title %>
+						<% if current_user && current_user.admin || current_user == post.user %>
+						<%= link_to t('posts.delete'), 
+						post_path(post), class:"badge badge-danger pull-right", method: :delete, data: { confirm: t('posts.conirm') } %>
+						<% end %>
+					</h5>
+					<p class="card-text"><%= post.description %></p>
+					<%= button_to t('posts.show_more'), post, method: :get, class:"btn btn-info" %>
+				</div>
+
+				<div class="card-footer">
+					<%= t "posts.created_by"%> <%= link_to post.user.username, post.user  %>. <%= t "posts.for_spec" %>
+					<a class="badge badge-warning"><%= post.spec%></a>
+					<div class="pull-right">
+						<% post.tag_list.each do |tag|%>
+						<a class="badge badge-info"><%= tag %></a>
+						<% end %>
+					</div>
 				</div>
 			</div>
-		</div>
-		
-		<% end-%>
-	</ol>   
-	<% else -%>
-	<h3>No results</h3>
-	<% end %>
+			<% end-%>
+		</ol>   
+		<% end %>
+	</div>
+	<div class = "col-sm-2 blog-sidebar">
+		<%= render 'layouts/right'%>
+	</div>
+</div>

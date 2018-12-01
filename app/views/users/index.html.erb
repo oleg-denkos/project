@@ -1,29 +1,74 @@
-<div class = "row">
-  <div class = "col-sm-9 blog-main">
-    <% if current_user.admin %>
-    <table class="table table-striped table-bordered table-list">
-      <thead>
-        <tr>
-         <th>Email</th>
-       </tr>
-     </thead>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"
+rel='stylesheet' type='text/css'>
 
-     <tbody id="myTable">
-      <% User.all.each do |user| %>
-      <tr>
-        <td><%= user.email %></td>
-        <td><%= link_to "Show", user %></td>
-      </tr>
-      <% end %>
-    </tbody>
+<script src="https://code.jquery.com/jquery-2.2.4.js">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous">
 
-  </table>
-  <% else %>
-  <H1 align = "center"> Only for admin </H1>
-  <% end %>
+</script>
+<%= form_tag edit_multiple_users_path, method: :post do %>
+<div class="container">
+
+ <p align = "center" class="alert" readonly><%= alert %></p>
+ <p align = "center"  class="notice" readonly><%= notice %></p>
+ <div class="row">
+  <div class="col-md-11 col-md-offset-1">
+    <div class="panel panel-default panel-table">
+      <div class="panel-heading">
+        <div class="row">
+
+          <div class="col col-xs-6 text-right">
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+              <%= submit_tag "Lock", class: "btn btn-warning" %>
+              <%= submit_tag "Delete", class: "btn btn-danger" %>
+              <%= submit_tag "Unlock", class: "btn btn-success" %>
+              <%= submit_tag "Add admin", class: "btn btn-dark" %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="panel-body table-responsive">
+        <table class="table table-striped table-bordered table-list">
+
+          <thead>
+            <tr>
+              <th align="center"><%= check_box_tag('check_all', 'check_all', false, :onClick => "checkAll(this);") %></th>
+              <th>Email</th>
+              <th>Username</th>
+              <th>Account type</th>
+              <th>Status</th>
+              <th>Registered at</th>
+            </tr>
+          </thead>
+
+          <tbody id="myTable">
+            <% User.all.each do |user| %>
+            <tr>
+              <td align="center"><%= check_box_tag "user_ids[]", user.id %></td>
+              <td><%= link_to user.email, user %></td>
+              <td><%= user.username %></td>
+              <td><% if user.admin %>
+                <a class="badge badge-warning"><%= t "users.admin" %></a>
+                <% else %>
+                <p><%= t "users.user" %>
+                </p>
+                <% end %>
+              </td>
+              <td><%= user.access_locked? ? "Locked" : "Unlocked" %></td>
+              <td><%= user.created_at.strftime("%k:%M %d %b %Y") %></td>
+            </tr>
+            <% end %>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 </div>
-<div class = "col-sm-2 offset-sm-1 blog-sidebar">
-  <%= render 'layouts/right'%>
-</div>
-</div>
+<% end %>

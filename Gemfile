@@ -6,6 +6,9 @@ ruby '2.5.1'
 gem 'devise'
 gem 'acts_as_votable', '~> 0.12.0'
 
+
+
+
 gem 'bootstrap'
 
 gem 'popper_js'
@@ -29,11 +32,11 @@ gem 'execjs'
 
 gem "socialization"
 
-gem 'chewy'
 
-
-
-
+gem 'redcarpet', '~> 3.4'
+gem 'albino', '~> 1.3', '>= 1.3.3'
+gem 'nokogiri', '~> 1.8', '>= 1.8.5'
+  
 gem 'jquery-rails'
 gem 'ruby_dev', '~> 0.1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

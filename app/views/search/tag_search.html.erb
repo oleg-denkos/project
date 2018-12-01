@@ -1,0 +1,30 @@
+<h1>asd:<%= :tag %></h1>
+
+<% if @tag_search %>
+<ol>
+	<% @tag_search.each_hit_with_result do |hit, post| %>
+	<div class="card w-75">
+		<div class="card-body">
+			<h5 class="card-title"><%= post.title %>
+				<% if current_user && current_user.admin || current_user == post.user %>
+				<%= link_to t('posts.delete'), 
+				post_path(post), class:"badge badge-danger pull-right", method: :delete, data: { confirm: t('posts.conirm') } %>
+				<% end %>
+			</h5>
+			<p class="card-text"><%= post.description %></p>
+			<%= button_to t('posts.show_more'), post, method: :get, class:"btn btn-info" %>
+		</div>
+
+		<div class="card-footer">
+			<%= t "posts.created_by"%> <%= link_to post.user.username, post.user  %>. <%= t "posts.for_spec" %>
+			<a class="badge badge-warning"><%= post.spec%></a>
+			<div class="pull-right">
+				<% post.tag_list.each do |tag|%>
+				<a class="badge badge-info"><%= tag %></a>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<% end-%>
+</ol>   
+<% end %>

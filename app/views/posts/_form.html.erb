@@ -36,6 +36,7 @@
   });
 
 </script>
+
 <%= form_with(model: post, local: true) do |form| %>
 <% if post.errors.any? %>
 <div id="error_explanation">
@@ -49,50 +50,51 @@
 </div>
 <% end %>
 
-<!------ Include the above in your HEAD tag ---------->
-<div class="row">
+<div class="card bg-light">
   <div class="col-md-12">
     <div class="panel-group" id="accordion">
       <div class="panel panel-primary">
-        <div class="row">
+        <div class="card-body">
+          <div class="row">
 
-          <div class="form-group col-md-12">
-            <%= form.label "Title" %>
-            <%= form.text_field :title, class:"form-control", placeholder:"Title" %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group"> 
-              <%= form.label "Specialization" %>
-              <%= form.number_field :spec, class:"form-control", placeholder:"Specialization" %>
+            <div class="form-group col-md-12">
+              <%= form.label t("posts.title") %>
+              <%= form.text_field :title, class:"form-control", placeholder:t("posts.title") %>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <%= form.label "Tags" %>
-              <%= form.text_field :tag_list, placeholder: "Tags", class: "form-control", id: "tags", data: { autocomplete: ActsAsTaggableOn::Tag.pluck(:name) } %>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group"> 
+                <%= form.label t("posts.spec")%>
+                <%= form.number_field :spec, class:"form-control", placeholder:t("posts.spec") %>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= form.label t("posts.tags") %>
+                <%= form.text_field :tag_list, placeholder: t("posts.tags"), class: "form-control", id: "tags", data: { autocomplete: ActsAsTaggableOn::Tag.pluck(:name) } %>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-md-12">
-            <%= form.label "Description" %>
-            <%= form.text_area :description, class:"form-control", placeholder:"Short description" %>
+          <div class="row">
+            <div class="form-group col-md-12">
+              <%= form.label t("posts.description") %>
+              <%= form.text_area :description, class:"form-control", placeholder:t("posts.description_short") %>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-md-12">
-            <%= form.label "Abstract" %>
-            <%= form.text_area :body, rows: "4", class:"form-control", placeholder:"Abstract" %>
+          <div class="row">
+            <div class="form-group col-md-12">
+              <%= form.label t("posts.body") %>
+              <%= form.text_area :body, as: :trix_editor, rows: "4", class:"form-control", placeholder:t("posts.body") %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="actions pull-right">
-  <%= form.submit class:"btn btn-primary " %>
+  <div class="actions pull-right">
+    <%= form.submit t("posts.complete"), class:"btn btn-primary pull-right" %>
+  </div>
 </div>
 
 <% end %>

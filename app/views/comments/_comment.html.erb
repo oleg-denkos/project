@@ -5,7 +5,7 @@
 			<% if comment!=nil %> 
 			<div id="likes_counter<%= comment.id %>" class="btn btn-warning btn-sm float-right" > <%= comment.likers_count %> </div> 
 			<% end %> 
-			<%= link_to '♡', { :controller => "comments", :post_id => comment.post_id, :action => "like_or_unlike", :comment => comment }, method: :post, remote: true, class: "btn btn-warning btn-sm float-right", id: "like_button" + comment.id.to_s %>	
+			<%= link_to '♡', { :controller => "comments", :post_id => comment.post_id, :action => "like_or_unlike", :comment => comment }, method: :post, remote: true, class: "btn btn-warning btn-sm float-right" %>	
 		</h5> - 
 		<%= comment.body %>
 	</div>
