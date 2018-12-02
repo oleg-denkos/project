@@ -22,8 +22,8 @@ class PostsController < ApplicationController
     if @post.rates.blank?
       @average_rate = 0
     else
-      @average_rate = @post.rates.average(:rating).round(2)
-      @post.aver_rate = @average_rate
+      @average_rate = @post.rates.average(:rating)
+      @post.aver_rate = @average_rate.round(2)
       @post.save
     end
   end
@@ -31,7 +31,7 @@ class PostsController < ApplicationController
   def search
     @query = params[:search_posts].presence && params[:search_posts][:query]
     if @query
-      @posts = PostsIndex.query(multi_match: {fields: ['title','description','body','user','comments','tag'], query: @query, type: "phrase_prefix"}).objects
+      @posts = PostsIndex.query(multi_match: {fields: ['title','description','body','user','comments','tags'], query: @query, type: "phrase_prefix"}).objects
     end
     respond_to do |format|
       format.html

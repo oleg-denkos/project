@@ -12,8 +12,8 @@
           <% end %>
         </h5>
         <p class="card-text"><%= post.description %>
-          <a class="badge badge-warning pull-right">average rating <%= post.rates.average(:rating).round(2) %></a>
-          <div class="average-rate-rating pull-right" data-score=<%= post.rates.average(:rating).round(2) %>>          </div>
+          <a class="badge badge-warning pull-right">average rating <%= post.rates.average(:rating) %></a>
+          <div class="average-rate-rating pull-right" data-score=<%= post.rates.average(:rating) %>>          </div>
         </p>
         <%= button_to t('posts.show_more'), post, method: :get, class:"btn btn-info" %>
       </div>
