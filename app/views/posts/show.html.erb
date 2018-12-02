@@ -26,9 +26,9 @@
     </div>
     <% else %>
     <br>
-    <a class="badge badge-warning">average rating <%=@average_rate %></a>
+    <a class="badge badge-warning">average rating <%=@post.aver_rate %></a>
     
-    <div class="average-rate-rating" data-score=<%= @average_rate %>></div>
+    <div class="average-rate-rating" data-score=<%= @post.aver_rate %>></div>
     <span class="number-of-reviews">Based on <%= @post.rates.count %> reviews</span>
 
     <% end %>
