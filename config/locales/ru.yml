@@ -1,11 +1,12 @@
 ru:
   activerecord:
     attributes:
-      users: 
+      user: 
+        attribute_name: 'String'  
         username: "Имя пользователя"
         created_at: "Дата создания"
         updated_at: "Дата последнего редактирования"
-      posts:
+      post:
         title: "Заголовок"
         body: "Основной текст"
         description: "Описание"
@@ -53,6 +54,10 @@ ru:
     body: "Конспект"
     complete: "Завершить"
     actions: "Действия"
+    average: "средний рейтинг "
+    based: "Основн на "
+    reviews: " отзывах(вов)"
+    eror: "Ошибок при создании конспекта :"
 
   users:
     username: "Имя пользователя"
@@ -72,6 +77,16 @@ ru:
     update: "Изменить"
     have_acc: "Есть аккаунт?"
     havent_acc: "Нет аккаунта?"
+    delete: "Удалить"
+    lock: "Блокировать"
+    unlock: "Разблокировать"
+    add_admin: "Назначит админом"
+    degrade: "Понизить"
+    account_type: "Тип аккаунта"
+    locked: "Заблокирован"
+    unlocked: "Актыўны"
+    u_need: "Вам трэба "
+    can_comment: " для каментавання"
 
   notice: 
     rate: 'Спасибо за отзыв.'

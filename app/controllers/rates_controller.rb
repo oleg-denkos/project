@@ -11,7 +11,7 @@ class RatesController < ApplicationController
 		@rate.user_id = current_user.id
 		@rate.voters_count = 1
 		if @rate.save
-			redirect_to post_path(@post, notice: t("notice.rate"))
+			redirect_to post_path(@post )
 		else
 			render 'new'
 		end

@@ -2,11 +2,10 @@
 	<div class = "col-sm-9 blog-main">
 		<h1><%= @user.username %></h1>
 		<%= render 'profile'%>
-		<hr>
-		<div id="myTable"><%= render 'posts_table'%></div>
-
 	</div>
 	<div class = "col-sm-3 blog-sidebar">
 		<%= render 'layouts/right'%>
 	</div>
 </div>
+<hr>
+<div id="myTable"><%= render 'posts_table'%></div>

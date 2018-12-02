@@ -1,4 +1,4 @@
-<h3 style="margin: 20px">Search: <%= @query %> </h3> 
+<h3 style="margin: 20px"><%= t "pages.search_results" %>: <%= @query %> </h3> 
 <div class = "row">
   <div class = "col-sm-9 blog-main">
     <% @posts.each do |post| %> 
@@ -11,7 +11,7 @@
           <% end %>
         </h5>
         <p class="card-text"><%= post.description %>
-          <a class="badge badge-warning pull-right">average rating <%= post.aver_rate %></a>
+          <a class="badge badge-warning pull-right"><%= t "posts.average" %><%= post.aver_rate %></a>
           <div class="average-rate-rating pull-right" data-score=<%= post.aver_rate %>>          </div>
         </p>
         <%= button_to t('posts.show_more'), post, method: :get, class:"btn btn-info" %>

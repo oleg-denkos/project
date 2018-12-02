@@ -7,6 +7,7 @@ rel='stylesheet' type='text/css'>
   crossorigin="anonymous">
 
 </script>
+
 <%= form_tag edit_multiple_users_path, method: :post do %>
 <div class="container">
 
@@ -20,10 +21,11 @@ rel='stylesheet' type='text/css'>
 
           <div class="col col-xs-6 text-right">
             <div class="btn-group mr-2" role="group" aria-label="First group">
-              <%= submit_tag "Lock", class: "btn btn-warning" %>
-              <%= submit_tag "Delete", class: "btn btn-danger" %>
-              <%= submit_tag "Unlock", class: "btn btn-success" %>
-              <%= submit_tag "Add admin", class: "btn btn-dark" %>
+              <%= submit_tag t("users.lock"), class: "btn btn-warning" %>
+              <%= submit_tag t("users.delete"), class: "btn btn-danger" %>
+              <%= submit_tag t("users.unlock"), class: "btn btn-success" %>
+              <%= submit_tag t("users.add_admin"), class: "btn btn-secondary" %>
+              <%= submit_tag t("users.degrade"), class: "btn btn-dark" %>
             </div>
           </div>
 
@@ -37,11 +39,11 @@ rel='stylesheet' type='text/css'>
           <thead>
             <tr>
               <th align="center"><%= check_box_tag('check_all', 'check_all', false, :onClick => "checkAll(this);") %></th>
-              <th>Email</th>
-              <th>Username</th>
-              <th>Account type</th>
-              <th>Status</th>
-              <th>Registered at</th>
+              <th><%= t "users.email" %></th>
+              <th><%= t "users.username" %></th>
+              <th><%= t "users.account_type" %></th>
+              <th><%= t "users.status" %></th>
+              <th><%= t "posts.created_at" %></th>
             </tr>
           </thead>
 
@@ -58,7 +60,7 @@ rel='stylesheet' type='text/css'>
                 </p>
                 <% end %>
               </td>
-              <td><%= user.access_locked? ? "Locked" : "Unlocked" %></td>
+              <td><%= user.access_locked? ? t("users.locked") : t("users.unlocked") %></td>
               <td><%= user.created_at.strftime("%k:%M %d %b %Y") %></td>
             </tr>
             <% end %>

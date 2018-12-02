@@ -26,10 +26,10 @@
     </div>
     <% else %>
     <br>
-    <a class="badge badge-warning">average rating <%=@post.aver_rate %></a>
+    <a class="badge badge-warning"><%= t "posts.average" %> <%=@post.aver_rate %></a>
     
     <div class="average-rate-rating" data-score=<%= @post.aver_rate %>></div>
-    <span class="number-of-reviews">Based on <%= @post.rates.count %> reviews</span>
+    <span class="number-of-reviews"><%= t "posts.based" %><%= @post.rates.count %> <%= t "posts.reviews" %></span>
 
     <% end %>
 
@@ -42,10 +42,10 @@
       <span class="badge badge-pill badge-info"><%= tag %></span>
       <% end %>
       <hr>
-      <strong> <%= t "posts.created_at" %></strong>: <%= @post.created_at.to_s.split('+')[0] %>
+      <strong> <%= t "posts.created_at" %></strong>: <%= @post.created_at.strftime("%H:%M %d.%b %Y") %>
     </p>
     <p>
-      <strong><%= t "posts.updated_at" %> </strong> : <%= @post.updated_at.to_s.split('+')[0] %>
+      <strong><%= t "posts.updated_at" %> </strong> : <%= @post.updated_at.strftime("%H:%M %d.%b %Y") %>
     </p>
     <% if current_user %>
     <%= form_with class:"form-inline my-2  my-lg-0", model:[@post, @comment] do |f| %>
@@ -55,7 +55,7 @@
 
 
     <% else %>
-    <p> You need to <%= link_to t("posts.login"), new_user_session_path%> before you can comment </p>
+    <p> <%= t "users.u_need" %> <%= link_to t("posts.login"), new_user_session_path%> <%= t "users.can_comment" %> </p>
     <% end %>
 
     <div class="container">

@@ -84,6 +84,10 @@ en:
     body: "Abstact"
     complete: "Complete"
     actions: "Actions"
+    average: "average rating "
+    based: "Based on "
+    reviews: " reviews"
+    eror: "prohibited this post from being saved:"
 
   users:
     username: "Username"
@@ -94,7 +98,7 @@ en:
     password: "Password"
     change_psw: "Change Password"
     current_psw: "Current Password"
-    admin_only: "Only for admins"
+    admin_only: "Only for Admins"
     or: "OR"
     login_via: "Login via"
     psw_size: "Password (6 characters minimum)"
@@ -103,6 +107,16 @@ en:
     update: "Update"
     have_acc: "Have an account?"
     havent_acc: "Haven't an account?"
+    delete: "Delete"
+    lock: "Lock"
+    unlock: "Active"
+    add_admin: "Add admin"
+    degrade: "Degrade"
+    account_type: "Account type"
+    locked: "Locked"
+    unlocked: "Unlocked"
+    u_need: "You need to "
+    can_comment: " before you can comment"
 
   notice: 
     rate: 'Thanks for the feedback.'

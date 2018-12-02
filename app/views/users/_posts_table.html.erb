@@ -15,7 +15,7 @@
   <tr>
     <td><%= link_to post.title, post %></td>
     <td><%= post.spec %></td>
-    <td><%=post.created_at.to_s.split('+')[0] %> </td>
+    <td><%=post.created_at.strftime("%H:%M %d.%b %Y") %> </td>
     <td><% post.tag_list.each do |tag| %>
       <a class="badge badge-info"><%= tag %></a>
       <% end %>

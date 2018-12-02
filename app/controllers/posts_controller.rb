@@ -63,7 +63,8 @@ class PostsController < ApplicationController
     @post.user = current_user
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: t("notice.post")}
+        flash[:notice] = t("notice.post")
+        format.html { redirect_to @post }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -77,7 +78,8 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: t("notice.post_update") }
+        flash[:notice] = t("notice.post_update")
+        format.html { redirect_to @post }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -89,7 +91,8 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: t("notice.post_destroy") }
+      flash[:notice] = t("notice.destroy")
+      format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
   end

@@ -8,7 +8,12 @@ class UsersController < ApplicationController
   
   
   def index
-    @users = User.all
+    if current_user && current_user.admin
+      @users = User.all
+    else
+      flash[:notice] = t("users.admin_only")
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def show
@@ -25,45 +30,32 @@ class UsersController < ApplicationController
    @user.update_attributes(params[:user])
    respond_with @user
  end
- 
- def do_reset_password
-  id = params[:id]
 
-  if params[:user][:password] != params[:user][:password_confirmation]
-    flash[:alert] = "Passwords must match." 
-    redirect_to :back
-    return
-  end
-  if @user.reset_password!(params[:user][:password],params[:user][:password_confirmation])
-    @user.save
-    respond_to do |format|
-      format.html { redirect_to @user, notice: 'Your password has been changed.' }
+
+ def edit_multiple
+  if params[:commit] == t("users.delete")
+    User.where(id: params[:user_ids]).destroy_all
+  elsif params[:commit] == t("users.lock")
+    User.where(id: params[:user_ids]).each do |user_to_lock|
+      user_to_lock.lock_access!
     end
-  else
-    flash[:alert] = "Invalid password, must be at least 6 charactors." 
-    redirect_to :back 
+  elsif params[:commit] == t("users.unlock")
+    User.where(id: params[:user_ids]).each do |user_to_unlock|
+      user_to_unlock.unlock_access!
+    end
+  elsif params[:commit] == t("users.add_admin")
+    User.where(id: params[:user_ids]).each do |user_to_admin|
+      user_to_admin.admin = true
+      user_to_admin.save
+    end
+  elsif params[:commit] == t("users.degrade")
+    User.where(id: params[:user_ids]).each do |user_to_admin|
+      user_to_admin.admin = false
+      user_to_admin.save
+    end
   end
+  redirect_to users_path
 end
-
-def edit_multiple
-    if params[:commit] == "Delete"
-      User.where(id: params[:user_ids]).destroy_all
-    elsif params[:commit] == "Lock"
-      User.where(id: params[:user_ids]).each do |user_to_lock|
-        user_to_lock.lock_access!
-      end
-    elsif params[:commit] == "Unlock"
-      User.where(id: params[:user_ids]).each do |user_to_unlock|
-        user_to_unlock.unlock_access!
-      end
-    elsif params[:commit] == "Add admin"
-      User.where(id: params[:user_ids]).each do |user_to_admin|
-        user_to_admin.admin = true
-        user_to_admin.save
-      end
-    end
-    redirect_to users_path
-  end
 
 private
 

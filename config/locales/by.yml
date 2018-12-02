@@ -53,6 +53,10 @@ by:
     body: "Канспект"
     complete: "Завяршыць"
     actions: "Дзеянні"
+    average: "сярэдняя адзнака "
+    based: "Заснаваны на "
+    reviews: " водгуках"
+    eror: "Памылак пры стварэнні кагспекта:"
 
   users:
     username: "Імя карыстальніка"
@@ -72,6 +76,16 @@ by:
     update: "Змяніць"
     have_acc: "Ёсць аккаунт?"
     havent_acc: "Няма аккаунта?"
+    delete: "Выдаліць"
+    lock: "Заблакаваць"
+    unlock: "Разблакаваць"
+    add_admin: "Прызначыць адмінам"
+    degrade: "Панізіць"
+    account_type: "Тып акаўнта"
+    locked: "Заблакаваны"
+    unlocked: "Unlocked"
+    u_need: "You need to "
+    can_comment: " before you can comment"
 
   notice: 
     rate: 'Дзякуй за водгук.'
