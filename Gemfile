@@ -38,6 +38,8 @@ gem 'elasticsearch-rails'
 gem 'bonsai-elasticsearch-rails', '~> 6.0'
 gem 'elasticsearch-model'
 
+gem 'sendgrid-ruby'
+
 
 gem 'redcarpet', '~> 3.4'
 gem 'albino', '~> 1.3', '>= 1.3.3'
