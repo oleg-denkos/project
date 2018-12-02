@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def average_rate
-    if @post.rates.count == nil
+    if  @post.rates == nil
       @post.aver_rate = 0
       @post.save
     else
