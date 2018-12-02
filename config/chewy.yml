@@ -1,7 +1,7 @@
 # config/chewy.yml
 # separate environment configs
 test:
-  host: 'https://cherry-813679676.us-east-1.bonsaisearch.net/'
+  host: 'https://tpwppmue1r:pz01xeev1q@beech-649738270.us-east-1.bonsaisearch.net/'
   prefix: 'test'
 development:
-  host: 'https://cherry-813679676.us-east-1.bonsaisearch.net/'
+  host: 'https://tpwppmue1r:pz01xeev1q@beech-649738270.us-east-1.bonsaisearch.net/'

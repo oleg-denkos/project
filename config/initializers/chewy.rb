@@ -1,1 +1,1 @@
-Chewy.settings = {host: 'https://cherry-813679676.us-east-1.bonsaisearch.net/'}
+Chewy.settings = {host: 'https://tpwppmue1r:pz01xeev1q@beech-649738270.us-east-1.bonsaisearch.net/'}
