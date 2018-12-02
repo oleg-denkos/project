@@ -285,6 +285,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   execjs
+  faraday (~> 0.15.3)
   filterrific
   jbuilder (~> 2.5)
   jquery-rails

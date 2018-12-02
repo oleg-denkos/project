@@ -1,1 +1,1 @@
-Chewy.settings = {host: 'localhost:9200'}
+Chewy.settings = {host: 'localhost:9250'}
