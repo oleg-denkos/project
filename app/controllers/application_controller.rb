@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
       I18n.locale = params[:locale] 
     elsif cookies[:locale] 
       I18n.locale = cookies[:locale] 
-    else I18n.locale = I18n.locale.default 
+    else I18n.locale = I18n.default_locale
     end 
     cookies[:locale] = I18n.locale 
   end
