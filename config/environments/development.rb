@@ -6,7 +6,7 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
   config.action_cable.mount_path = "/cable"
-  
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:5709cc74bfecea5fedf041915bdca504@barb.redistogo.com:10015/'
   # Do not eager load code on boot.
   config.eager_load = false
 
