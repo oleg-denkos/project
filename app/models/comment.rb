@@ -7,7 +7,7 @@ class Comment < ApplicationRecord
   acts_as_likeable
 
   
-  update_index('posts#post') { posts }
+  update_index('posts#post') { post }
 
 
   after_create_commit {

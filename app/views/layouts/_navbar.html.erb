@@ -11,11 +11,12 @@
       </li>
       <%= link_to t("pages.back"), :back, class:"nav-link" %>
     </ul>
-    <%= form_for :search_posts, url: search_posts_path, method: :get do |f| %> 
-    <%= f.text_field :query, value: params[:search_posts].presence && params[:search_posts][:query], class: "form-control mr-sm-2", placeholder: t('pages.search') %> 
-    <%= f.submit t('pages.search'), class: "btn btn-outline-success btn-sm" %> 
-    <% end %>
-
+    <div class="form-inline my-2 my-lg-0">
+      <%= form_for :search_posts, url: search_posts_path, method: :get do |f| %> 
+      <%= f.text_field :query, value: params[:search_posts].presence && params[:search_posts][:query], class: "form-control mr-sm-2", placeholder: t('pages.search') %> 
+      <%= f.submit t('pages.search'), class: "btn btn-outline-success btn-sm" %> 
+      <% end %>
+    </div>
 
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">

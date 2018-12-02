@@ -34,6 +34,10 @@ gem "socialization"
 
 gem 'chewy'
 
+gem 'elasticsearch-rails'
+gem 'bonsai-elasticsearch-rails', '~> 6.0'
+gem 'elasticsearch-model'
+
 
 gem 'redcarpet', '~> 3.4'
 gem 'albino', '~> 1.3', '>= 1.3.3'
@@ -65,13 +69,11 @@ gem 'redis', '~> 4.0'
 
 gem 'faraday', '~> 0.15.3'
 
-gem 'bonsai-elasticsearch-rails', '~> 6'
-gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '6.x'
-gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '6.x'
+
 gem 'rspec', '~> 3.8'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'hashie', '~> 3.6'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
