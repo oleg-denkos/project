@@ -19,8 +19,8 @@ class PostsController < ApplicationController
   end
 
   def average_rate
-    if  @post.rates.average(:rating) == nil
-      @post.aver_rate = 0
+    if  @post.rates.average(:rating).to_i == 0
+      @post.aver_rate = 0.0
       @post.save
     else
       @post.aver_rate = @post.rates.average(:rating).round(2)
