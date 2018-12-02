@@ -7,7 +7,9 @@ class Comment < ApplicationRecord
   acts_as_likeable
 
   
-  
+  update_index('posts#post') { posts }
+
+
   after_create_commit {
   	CommentBroadcastJob.perform_later(self)
   }

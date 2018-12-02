@@ -12,21 +12,8 @@ class Post < ApplicationRecord
 
 	acts_as_taggable
 	include ActsAsTaggableOn::TagsHelper
-
-	searchable do
-		text :title, :body, :description, boost: 5.0
-		integer :spec
-		text :tag_list do
-			tag_list.map { |tag| tag}
-		end
-		text :comments do
-			comments.map { |comment| comment.body }
-		end
-		string  :sort_title do
-			title.downcase.gsub(/^(an?|the)/, '')
-		end
-	end
 	
+	update_index('posts#post') { self }
 	self.per_page = 10
 	
 end

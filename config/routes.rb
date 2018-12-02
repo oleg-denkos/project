@@ -5,14 +5,16 @@ Rails.application.routes.draw do
 		resources :posts do
 			resources 'comments'
 			post "rates", to: "rates#create"
+			collection do
+				get :search
+			end
 		end
 
 		
 
-		get "search", to: 'search#index'
-		get "search", to: 'search#tag_search'
 		post 'comments/like_or_unlike'
 		devise_for :users
+		resources 'devise'
 		resources :users do
 			collection do
 				post :edit_multiple
@@ -20,6 +22,5 @@ Rails.application.routes.draw do
 		end
 	end
 	root to: 'pages#home'
-	resources :controller=>"devise/unlocks"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

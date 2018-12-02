@@ -29,8 +29,13 @@ class PostsController < ApplicationController
   end
 
   def search
-    @search = Post.search(:include => [:comments]) do
-      keywords(params[:q])
+    @query = params[:search_posts].presence && params[:search_posts][:query]
+    if @query
+      @posts = PostsIndex.query(multi_match: {fields: ['title','description','body','user','comments','tag'], query: @query, type: "phrase_prefix"}).objects
+    end
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
