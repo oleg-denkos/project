@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def average_rate
-    if @post.rates.blank?
+    if @post.rates.count == 0
       @average_rate = 0
     else
       @average_rate = @post.rates.average(:rating)
