@@ -61,10 +61,14 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
- gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 
- gem 'faraday', '~> 0.15.3'
- gem 'rspec', '~> 3.8'
+gem 'faraday', '~> 0.15.3'
+
+gem 'bonsai-elasticsearch-rails', '~> 6'
+gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '6.x'
+gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '6.x'
+gem 'rspec', '~> 3.8'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
