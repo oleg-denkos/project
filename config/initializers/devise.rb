@@ -260,10 +260,7 @@ Devise.setup do |config|
   config.omniauth :facebook, '2170858646566481', '7949acb99dca5b9d80aedad7eaa245f9'
   config.omniauth :vkontakte, '6770473', 'GDkuOUjiFhRDjhDNZ4wA',
   {
-    :scope => ’email’,
-    :lang => ‘ru’,
     :https => 1,
-    :image_size => ‘bigger_x2’
   }
 
 
