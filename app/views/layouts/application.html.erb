@@ -12,7 +12,7 @@
   <meta id='meta_post' post="<%= @post.try(:id) %>"/>
 </head>
 
-<body class="theme ">
+<body class="<%= current_user ? current_user.theme : (  cookies[:theme]) == 'dark' ? 'dark' : 'light'%>_theme ">
   <%= render 'layouts/navbar'%>
   <div class = "container">
     <%= render 'layouts/alerts'%>

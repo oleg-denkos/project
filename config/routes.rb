@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 				get :search
 			end
 		end
-		
+		get 'users/current_user_theme'
 		post 'comments/like_or_unlike'
 		
 		resources 'devise'
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 				post :edit_multiple
 			end
 		end
+
 	end
 	root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

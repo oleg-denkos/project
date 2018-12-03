@@ -3,7 +3,10 @@
 	color: #ce0202;
 	.card{
 		color: #e81717;
-		background-color: #1e1c1c;
+		background-color: #111111;
+		.badge-warning{
+			color: #111111;
+		}
 	}
 	.btn-info{
 			background-color: #191818;
@@ -26,7 +29,8 @@
 		color: #0e110e;
 	}
 	.card-body{
-		background-color: #1c281c;
+		background-color: #353535;
+		color: #e5e0e0;
 
 	}
 	.card-devise{

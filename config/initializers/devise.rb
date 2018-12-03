@@ -142,7 +142,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  config.reconfirmable = true
+  config.reconfirmable = false
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]
@@ -258,10 +258,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :facebook, '2170858646566481', '7949acb99dca5b9d80aedad7eaa245f9'
-  config.omniauth :vkontakte, '6770473', 'GDkuOUjiFhRDjhDNZ4wA',
-  {
-    :https => 1,
-  }
+  config.omniauth :vkontakte, '6770473', 'GDkuOUjiFhRDjhDNZ4wA'
+  config.omniauth :twitter, 'anhcONImYVrT0Pxh7t9Gyq7rW', 'fmvjFIieKhLtoexk5INIrOmdEx8f3jng41qYsIuXGDPFIhHHQr'
 
 
 

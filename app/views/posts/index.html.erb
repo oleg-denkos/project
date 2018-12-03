@@ -11,7 +11,7 @@
           post_path(post), class:"badge badge-danger pull-right", method: :delete, data: { confirm: t('posts.conirm') } %>
           <% end %>
         </h5>
-        <p class="card-text"><%= post.description %>
+        <p class="card-text"><%=post.description %>
           <a class="badge badge-warning pull-right"><%= t "posts.average" %><%= post.aver_rate %></a>
           <div class="average-rate-rating pull-right" data-score=<%= post.aver_rate %>></div>
         </p>

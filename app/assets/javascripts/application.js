@@ -1,4 +1,4 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
+	// This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, or any plugin's
@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.purr
-//= require filterrific/filterrific-jquery
+//= require trix
 //= require cable
 //= require bootstrap
 //= require popper
@@ -22,6 +22,7 @@
 //= require turbolinks
 //= require_tree .
 //= require best_in_place
+
 
 $(function(){
     $('.button-checkbox').each(function(){

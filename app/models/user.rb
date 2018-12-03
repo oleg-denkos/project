@@ -13,7 +13,9 @@ class User < ApplicationRecord
   acts_as_liker
 
   validates :username, :email, presence: true
-  validates :username, :email, uniqueness: true
+  validates :username, uniqueness: true, length: { minimum: 3 }
+
+  
 
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
@@ -38,6 +40,25 @@ class User < ApplicationRecord
   end
 
    def self.find_for_vkontakte_oauth(auth, signed_in_resource = nil)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    if user
+      return user
+    else
+      registered_user = User.where(:email => auth.info.email).first 
+
+      return registered_user if registered_user
+
+      user = User.new(
+       username:auth.extra.raw_info.name,
+       provider:auth.provider,
+       uid:auth.uid,
+       email:auth.info.email,
+       password:Devise.friendly_token[0,20]
+       )
+    end
+  end
+
+  def self.find_for_twitter_oauth(auth, signed_in_resource = nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     if user
       return user

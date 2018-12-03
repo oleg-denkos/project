@@ -85,7 +85,8 @@
           <div class="row">
             <div class="form-group col-md-12">
               <%= form.label t("posts.body") %>
-              <%= form.text_area :body, as: :trix_editor, rows: "4", class:"form-control", placeholder:t("posts.body") %>
+              <%= form.hidden_field :body, placeholder:t("posts.body") %>
+              <trix-editor input="post_body"></trix-editor>
             </div>
           </div>
         </div>

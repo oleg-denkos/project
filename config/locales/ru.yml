@@ -33,6 +33,7 @@ ru:
     language: "Язык"
     all_tags: "Облако тэгов"
     theme: "Изменить тему"
+    message: "Вы уже создали конспект с таким названием."
 
   posts:
     abstracts: "Конспекты"
@@ -72,6 +73,8 @@ ru:
     admin_only: "Только для администрации"
     or: "ИЛИ"
     login_via_tw: " Войти через Twitter"
+    login_via_vk: " Войти через Vkontakte"
+    login_via_fb: " Войти через Facebook"
     login_via: "Войти через "
     psw_size: "Пароль (Минимум 6 символов)"
     psw_confirm: "Подтвердите пароль"

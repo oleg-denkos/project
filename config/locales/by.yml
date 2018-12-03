@@ -32,6 +32,7 @@ by:
     language: "Мова"
     all_tags: "Воблака тэгаў"
     theme: "Змяніць тэму"
+    message: "У вас ужо створаны канспект з такой назвай."
 
   posts:
     abstracts: "Канспекты"
@@ -71,6 +72,8 @@ by:
     admin_only: "Толькі для адміністрацыі"
     or: "АБО"
     login_via_tw: "Увайсці праз Twitter"
+    login_via_vk: "Увайсці праз Vkontakte"
+    login_via_fb: "Увайсці праз Facebook"
     psw_size: "Пароль (Мінімум 6 сімвалаў)"
     psw_confirm: "Пацвердзіце пароль"
     create: "Стварыць аккаунт"

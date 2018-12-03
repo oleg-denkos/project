@@ -32,6 +32,13 @@ class UsersController < ApplicationController
     respond_with @user
   end
 
+  def current_user_theme
+    cookies[:theme] = params[:theme]
+    @user = User.find(params[:id])
+    @user.theme = params[:theme]
+    @user.save
+    redirect_to root_path
+  end
 
   def edit_multiple
     if params[:commit] == t("users.delete")
@@ -57,34 +64,6 @@ class UsersController < ApplicationController
     end
     redirect_to users_path
   end
-  
-  def theme
-    if current_user.theme != "dark"
-      @theme = 'light'
-      current_user.theme = "dark"
-      current_user.theme.save
-    else
-      @theme = 'dark'
-      current_user.theme = "light"
-      current_user.theme.save
-    end
-  end
-
-  def set_theme
-
-    if current_user.theme != "dark"
-      @theme = 'dark'
-      current_user.theme = "light"
-      current_user.theme.save
-    else
-      @theme = 'light'
-      current_user.theme = "dark"
-      current_user.theme.save
-    end
-  end
-
-
-
 
   private
 

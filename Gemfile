@@ -7,7 +7,6 @@ gem 'devise'
 gem 'acts_as_votable', '~> 0.12.0'
 
 
-
 gem 'hashie', '~> 3.5', '>= 3.5.7'
 gem 'bootstrap'
 
@@ -44,15 +43,12 @@ gem 'omniauth-twitter', '~> 1.4'
 gem 'omniauth-facebook', '~> 5.0'
 gem 'omniauth-vkontakte', '~> 1.4', '>= 1.4.1'
 
-
-gem 'redcarpet', '~> 3.4'
-gem 'albino', '~> 1.3', '>= 1.3.3'
-gem 'nokogiri', '~> 1.8', '>= 1.8.5'
+gem 'trix', '~> 0.10.1'
   
 gem 'jquery-rails'
 gem 'ruby_dev', '~> 0.1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 5.1', '>= 5.1.6.1'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server

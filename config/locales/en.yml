@@ -62,6 +62,7 @@ en:
     show: "Show"
     language: "Language"
     all_tags: "Tags cloud"
+    message: "You have already created an abstract with this title."
 
   posts:
     abstracts: "Abstracts"
@@ -101,6 +102,8 @@ en:
     admin_only: "Only for Admins"
     or: "OR"
     login_via_tw: "Login via Twitter"
+    login_via_vk: "Login via Vkontakte"
+    login_via_fb: "Login via Facebook"
     psw_size: "Password (6 characters minimum)"
     psw_confirm: "Confirm password"
     create: "Create Account"

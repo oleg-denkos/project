@@ -6,9 +6,10 @@ class Post < ApplicationRecord
 	
 
 	validates :title, :body, :description, :spec, :tag_list, presence: true
- 	validates :spec, numericality: { only_integer: true }
- 	validates :title, uniqueness: { scope: :user_id,
-    message: "You have already created an abstract with this title." }
+ 	validates :spec, numericality: { only_integer: true }, length: { maximum: 50000 }
+ 	validates :title, uniqueness: { scope: :user_id },
+    length: { minimum: 5 }
+    validates :body, :description, length: { minimum: 10, maximum:200000 }
 
 	acts_as_taggable
 	include ActsAsTaggableOn::TagsHelper
