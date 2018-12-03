@@ -10,7 +10,7 @@
     </h2>
     <br>
     <strong><%= t "posts.description" %>:</strong>
-    <h7><%= markdown(@post.description) %>... 
+    <h7><%= @post.description %>... 
       <br>
       <small> <%= t "posts.created_by" %> <%=link_to @post.user.username, @post.user, method: :get %>. <%= t "posts.for_spec" %></small><a class="badge badge-warning"><%= @post.spec%></a>
     </h7> 
@@ -36,7 +36,7 @@
     
     <hr>
     <p>
-      <%= markdown(@post.body) %>
+      <%= @post.body.html_safe %>
       <br>
       <% @post.tag_list.each do |tag|%>
       <span class="badge badge-pill badge-info"><%= tag %></span>
