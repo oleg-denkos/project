@@ -32,6 +32,7 @@ ru:
     show: "Показать"
     language: "Язык"
     all_tags: "Облако тэгов"
+    theme: "Изменить тему"
 
   posts:
     abstracts: "Конспекты"
@@ -70,7 +71,8 @@ ru:
     current_psw: "Текущий пароль"
     admin_only: "Только для администрации"
     or: "ИЛИ"
-    login_via: "Войти через"
+    login_via_tw: " Войти через Twitter"
+    login_via: "Войти через "
     psw_size: "Пароль (Минимум 6 символов)"
     psw_confirm: "Подтвердите пароль"
     create: "Создать аккаунт"

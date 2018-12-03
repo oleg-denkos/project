@@ -31,6 +31,7 @@ by:
     show: "Паказаць"
     language: "Мова"
     all_tags: "Воблака тэгаў"
+    theme: "Змяніць тэму"
 
   posts:
     abstracts: "Канспекты"
@@ -69,7 +70,7 @@ by:
     current_psw: "Бягучы пароль"
     admin_only: "Толькі для адміністрацыі"
     or: "АБО"
-    login_via: "Увайсці праз "
+    login_via_tw: "Увайсці праз Twitter"
     psw_size: "Пароль (Мінімум 6 сімвалаў)"
     psw_confirm: "Пацвердзіце пароль"
     create: "Стварыць аккаунт"

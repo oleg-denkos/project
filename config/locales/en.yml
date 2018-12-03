@@ -100,7 +100,7 @@ en:
     current_psw: "Current Password"
     admin_only: "Only for Admins"
     or: "OR"
-    login_via: "Login via"
+    login_via_tw: "Login via Twitter"
     psw_size: "Password (6 characters minimum)"
     psw_confirm: "Confirm password"
     create: "Create Account"
@@ -117,6 +117,7 @@ en:
     unlocked: "Unlocked"
     u_need: "You need to "
     can_comment: " before you can comment"
+    theme: "Change theme"
 
   notice: 
     rate: 'Thanks for the feedback.'

@@ -8,7 +8,7 @@ gem 'acts_as_votable', '~> 0.12.0'
 
 
 
-
+gem 'hashie', '~> 3.5', '>= 3.5.7'
 gem 'bootstrap'
 
 gem 'popper_js'
@@ -39,6 +39,10 @@ gem 'bonsai-elasticsearch-rails', '~> 6.0'
 gem 'elasticsearch-model'
 
 gem 'sendgrid-ruby'
+gem 'omniauth', '~> 1.8', '>= 1.8.1'
+gem 'omniauth-twitter', '~> 1.4'
+gem 'omniauth-facebook', '~> 5.0'
+gem 'omniauth-vkontakte', '~> 1.4', '>= 1.4.1'
 
 
 gem 'redcarpet', '~> 3.4'
@@ -75,7 +79,6 @@ gem 'faraday', '~> 0.15.3'
 gem 'rspec', '~> 3.8'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'hashie', '~> 3.6'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

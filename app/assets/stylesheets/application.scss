@@ -14,7 +14,9 @@
  *= require_tree .
  *
  */
-
+.card-devise{
+    background-color: #e8f4e8;
+}
 .alert-alert {
 	@extend .alert-danger;
 }

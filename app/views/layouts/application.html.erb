@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
   <title>Project</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
@@ -13,7 +12,7 @@
   <meta id='meta_post' post="<%= @post.try(:id) %>"/>
 </head>
 
-<body class="<%= current_user ? current_user.theme : (  cookies[:theme]) == 'dark' ? 'dark' : 'light'%>_theme ">
+<body class="theme ">
   <%= render 'layouts/navbar'%>
   <div class = "container">
     <%= render 'layouts/alerts'%>
