@@ -15,8 +15,7 @@
       <p>
       <%= link_to  t("users.login_via_fb"), user_facebook_omniauth_authorize_path, class:"btn fab fa-facebook btn-block btn-facebook" %>
       <%= link_to  t("users.login_via_vk"), user_vkontakte_omniauth_authorize_path, class:"btn fab fa-vkontakte btn-block btn-vkontakte" %>
-      <%= link_to  t("users.login_via_tw"), user_twitter_omniauth_authorize_path, class:"btn fab fa-twitter btn-block btn-twitter" %>
-        <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   <%= t "users.login_via" %> facebook</a>
+      <%= link_to  t("users.login_via_tw"), user_facebook_omniauth_authorize_path, class:"btn fab fa-twitter btn-block btn-twitter" %>
       </p>
       <p class="divider-text">
         <span class="bg-light"><%= t "users.or" %></span>

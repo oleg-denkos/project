@@ -13,36 +13,36 @@
     <article class="card-body mx-auto" style="max-width: 400px;">
       <h4 class="card-title mt-3 text-center"><%= t "posts.login" %></h4>
       <p>
-        <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   <%= t "posts.login_via" %> Twitter</a>
-        <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   <%= t "posts.login_via" %> facebook</a>
-      </p>
-      <p class="divider-text">
-        <span class="bg-light"><%= t "posts.or" %></span>
-      </p>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%=  devise_error_messages! %>
-      <% render "layouts/alerts"%>
-      <div class="form-group input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-        </div>
-        <% f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control input-lg", placeholder:t("users.email") %>
-      </div> <!-- form-group// -->
+        <%= link_to  t("users.login_via_fb"), user_facebook_omniauth_authorize_path, class:"btn fab fa-facebook btn-block btn-facebook" %>
+        <%= link_to  t("users.login_via_vk"), user_vkontakte_omniauth_authorize_path, class:"btn fab fa-vkontakte btn-block btn-vkontakte" %>
+        <%= link_to  t("users.login_via_tw"), user_facebook_omniauth_authorize_path, class:"btn fab fa-twitter btn-block btn-twitter" %>
+        <p class="divider-text">
+          <span class="bg-light"><%= t "posts.or" %></span>
+        </p>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%=  devise_error_messages! %>
+        <% render "layouts/alerts"%>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+          </div>
+          <% f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control input-lg", placeholder:t("users.email") %>
+        </div> <!-- form-group// -->
 
-      <div class="form-group input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-        </div>
-        <% f.label :password %>
-        <%= f.password_field :password, autocomplete: "new-password", class:"form-control input-lg", placeholder:t("users.psw_size") %>
-      </div> <!-- form-group// -->                                   
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block"> <%= t "posts.login" %> </button>
-      </div> <!-- form-group// -->      
-      <p class="text-center"><%= t "users.have_acc" %> <%= link_to t('pages.sign_up'), new_user_registration_path %> </p>                                                                 
-      <% end %>
-    </article>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          </div>
+          <% f.label :password %>
+          <%= f.password_field :password, autocomplete: "new-password", class:"form-control input-lg", placeholder:t("users.psw_size") %>
+        </div> <!-- form-group// -->                                   
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block"> <%= t "posts.login" %> </button>
+        </div> <!-- form-group// -->      
+        <p class="text-center"><%= t "users.have_acc" %> <%= link_to t('pages.sign_up'), new_user_registration_path %> </p>                                                                 
+        <% end %>
+      </article>
+    </div>
   </div>
-</div>
-<% render "devise/shared/links" %>
+  <% render "devise/shared/links" %>
