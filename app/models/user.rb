@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable, :omniauthable,
+  devise :database_authenticatable, :registerable, :omniauthable, :omniauth_providers => [:facebook, :vkontakte],
   :recoverable, :rememberable, :validatable, :lockable, :confirmable
 
   has_many :comments, dependent: :destroy
@@ -37,18 +37,12 @@ class User < ApplicationRecord
     end
   end
 
-  def self.find_for_vkontakte_oauth access_token
-    if user = User.where(:email => access_token.extra.raw_info.domain+'@vk.com').first
-      user
-    else 
-      User.create!(:provider => access_token.provider,
-        :uid => access_token.info.user_ids,
-        :username => access_token.info.name,
-        :email => access_token.extra.raw_info.domain+'@vk.com',
-        :password => Devise.friendly_token[0,20]) 
-      user.skip_confirmation!
-      user.save
-      user
+  def self.from_omniauth_vk(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.username = auth.info.name
     end
   end
+  end 
 end
